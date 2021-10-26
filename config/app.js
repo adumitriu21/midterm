@@ -9,7 +9,7 @@ let mongoose = require('mongoose');
 let dbURI = require('./db');
 
 // Connect to the Database
-mongoose.connect(dbURI.AtlasDB);
+mongoose.connect(dbURI.AtlasDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));

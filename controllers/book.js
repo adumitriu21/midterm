@@ -4,7 +4,7 @@ let Book = require('../models/book');
 // Gets all books from the Database and renders the page to list all books.
 module.exports.bookList = function(req, res, next) {  
     Book.find((err, bookList) => {
-        // console.log(bookList);
+        console.log(bookList);
         if(err)
         {
             return console.error(err);
