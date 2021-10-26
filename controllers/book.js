@@ -45,7 +45,7 @@ module.exports.details = (req, res, next) => {
 module.exports.displayAddPage = (req, res, next) => {
     
     // ADD YOUR CODE HERE        
-
+ 
 }
 
 // Processes the data submitted from the Add form to create a new book
@@ -59,7 +59,20 @@ module.exports.processAddPage = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
     
     // ADD YOUR CODE HERE
+    let id = req.params.id;
 
+    Book.findById(id, (err, bookToEdit) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            // render the edit page
+            res.render('book/add_edit', {title: 'Edit Book', book: bookToEdit})
+        }
+    });
 }
 
 // Processes the data submitted from the Edit form to update a book
