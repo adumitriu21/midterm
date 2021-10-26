@@ -79,7 +79,29 @@ module.exports.displayEditPage = (req, res, next) => {
 module.exports.processEditPage = (req, res, next) => {
     
     // ADD YOUR CODE HERE
+    let id = req.params.id
     
+    let updatedBook = Book({
+        "_id": id,
+        "Title": req.body.Title,
+        "Description": req.body.Description,
+        "Price": req.body.Price,
+        "Author": req.body.Author,
+        "Genre": req.body.Genre
+    });
+
+    Book.updateOne({_id: id}, updatedBook, (err) =>{
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            // got back to the now updated book list
+            res.redirect('/book/list')
+        }
+    })
 }
 
 // Deletes a book based on its id.
