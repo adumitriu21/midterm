@@ -79,7 +79,7 @@ module.exports.displayEditPage = (req, res, next) => {
 module.exports.processEditPage = (req, res, next) => {
     
     // ADD YOUR CODE HERE
-    let id = req.params.id
+    let id = req.params.id;
     
     let updatedBook = Book({
         "_id": id,
@@ -108,5 +108,18 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     
     // ADD YOUR CODE HERE
+    let id = req.params.id;
 
+    Book.remove({_id: id}, (err) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            // refresh book list page
+            res.redirect('/book/list')
+        }
+    })
 }
