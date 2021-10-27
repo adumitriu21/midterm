@@ -41,18 +41,37 @@ module.exports.details = (req, res, next) => {
     });
 }
 
-// Renders the Add form using the add_edit.ejs template
+// Renders the Add form using the add_edit.ejs template (MODIFIED TO add_book.ejs!!!)
 module.exports.displayAddPage = (req, res, next) => {
     
     // ADD YOUR CODE HERE        
- 
+    res.render('book/add_book', {title: 'Add Book'})
 }
 
-// Processes the data submitted from the Add form to create a new book
+// Processes the data submitted from the Add form to create a new book (MODIFIED TO add_book.ejs!!!)
 module.exports.processAddPage = (req, res, next) => {
 
     // ADD YOUR CODE HERE
+    let newBook = Book({
+        "Title": req.body.Title,
+        "Description": req.body.Description,
+        "Price": req.body.Price,
+        "Author": req.body.Author,
+        "Genre": req.body.Genre
+    });
 
+    Book.create(newBook, (err, Book) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //redirect to updated book list
+            res.redirect('/book/list');
+        }
+    });
 }
 
 // Gets a book by id and renders the Edit form using the add_edit.ejs template
@@ -70,7 +89,7 @@ module.exports.displayEditPage = (req, res, next) => {
         else
         {
             // render the edit page
-            res.render('book/add_edit', {title: 'Edit Book', book: bookToEdit})
+            res.render('book/edit_book', {title: 'Edit Book', book: bookToEdit})
         }
     });
 }
