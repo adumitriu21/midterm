@@ -1,6 +1,14 @@
 
 let mongoose = require('mongoose');
 
+/* 
+  File Name: models/book.js
+  Author: Adrian Dumitriu
+  Student ID: 300566849
+  Web App Name: Favourite Books
+*/
+
+
 // Create a model class
 let bookModel = mongoose.Schema(
     {

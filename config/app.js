@@ -1,3 +1,10 @@
+/* 
+  File Name: app.js
+  Author: Adrian Dumitriu
+  Student ID: 300566849
+  Web App Name: Favourite Books
+*/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

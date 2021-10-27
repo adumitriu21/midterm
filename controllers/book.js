@@ -1,3 +1,11 @@
+/* 
+  File Name: controllers/book.js 
+  Author: Adrian Dumitriu
+  Student ID: 300566849
+  Web App Name: Favourite Books
+*/
+
+
 // create a reference to the model
 let Book = require('../models/book');
 
